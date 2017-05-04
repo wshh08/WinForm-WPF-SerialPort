@@ -48,6 +48,7 @@
             this.PostTextBox = new System.Windows.Forms.TextBox();
             this.PostButton = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.ScanButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -55,6 +56,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ScanButton);
             this.groupBox1.Controls.Add(this.CloseButton);
             this.groupBox1.Controls.Add(this.OpenButton);
             this.groupBox1.Controls.Add(this.panel2);
@@ -246,6 +248,16 @@
             this.PostButton.UseVisualStyleBackColor = true;
             this.PostButton.Click += new System.EventHandler(this.PostButton_Click);
             // 
+            // ScanButton
+            // 
+            this.ScanButton.Location = new System.Drawing.Point(66, 99);
+            this.ScanButton.Name = "ScanButton";
+            this.ScanButton.Size = new System.Drawing.Size(103, 23);
+            this.ScanButton.TabIndex = 10;
+            this.ScanButton.Text = "扫描可用端口";
+            this.ScanButton.UseVisualStyleBackColor = true;
+            this.ScanButton.Click += new System.EventHandler(this.ScanButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -291,6 +303,7 @@
         private System.Windows.Forms.TextBox PostTextBox;
         private System.Windows.Forms.Button PostButton;
         private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.Button ScanButton;
     }
 }
 

@@ -28,6 +28,8 @@ namespace WinForm_SerialPort
             BaudComboBox.Text = "4800";                                    //设定波特率下拉菜单默认值
 
             serialPort1.DataReceived += new SerialDataReceivedEventHandler(port_DataReceived);   //必须手动添加串口数据接收事件的处理方法
+
+            ScanSerialPort(serialPort1, SerialPortComboBox);
         }
 
         private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)  //串口数据接收事件
@@ -111,6 +113,34 @@ namespace WinForm_SerialPort
                         Data[0] = Convert.ToByte(PostTextBox.Text.Substring(PostTextBox.Text.Length - 1, 1), 16); //单独处理剩下的那个数值
                         serialPort1.Write(Data, 0, 1);
                     }
+                }
+            }
+        }
+
+        private void ScanButton_Click(object sender, EventArgs e)
+        {
+            //扫描可用按钮对应事件
+            ScanSerialPort(serialPort1, SerialPortComboBox);
+        }
+
+        private void ScanSerialPort(SerialPort MyPort, ComboBox MyBox)
+        {
+            //扫描可用按钮
+            string Buffer;               //缓存
+            MyBox.Items.Clear();         //清空端口下拉菜单
+            for(int i = 1; i < 20; i++)
+            {
+                try
+                {
+                    Buffer = "COM" + i.ToString();
+                    MyPort.PortName = Buffer;
+                    MyPort.Open();
+                    MyBox.Items.Add(Buffer);   //如果串口打开成功，说明可用，将其名称添加到下拉菜单中
+                    MyPort.Close();
+                }
+                catch
+                {
+                    //ignore
                 }
             }
         }
