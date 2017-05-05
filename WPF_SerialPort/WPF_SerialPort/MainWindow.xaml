@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_SerialPort"
         mc:Ignorable="d"
+        Title="WPF串口助手" Height="360" Width="525" Background="LightBlue">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="266*"/>
@@ -17,7 +18,7 @@
                 <ColumnDefinition Width="5*"/>
             </Grid.ColumnDefinitions>
             <!--设置模块-->
-            <GroupBox x:Name="groupBox" Header="设置" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="248" Width="238">
+            <GroupBox x:Name="groupBox" Header="设置" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="248" Width="238" BorderBrush="White" BorderThickness="1">
                 <DockPanel>
                     <!--端口选择-->
                     <Grid Margin="0,1" DockPanel.Dock="Top">
@@ -35,11 +36,20 @@
                             <ColumnDefinition Width="10*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="20,10,0,0" TextWrapping="Wrap" Text="波特率" VerticalAlignment="Top"/>
-                        <ComboBox x:Name="BaudComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="11,10,0,0" VerticalAlignment="Top" Width="120"/>
+                        <ComboBox x:Name="BaudComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="11,10,0,0" VerticalAlignment="Top" Width="120">
+                            <ComboBoxItem>600</ComboBoxItem>
+                            <ComboBoxItem>1200</ComboBoxItem>
+                            <ComboBoxItem>2400</ComboBoxItem>
+                            <ComboBoxItem>4800</ComboBoxItem>
+                            <ComboBoxItem>9600</ComboBoxItem>
+                            <ComboBoxItem>14400</ComboBoxItem>
+                            <ComboBoxItem>19200</ComboBoxItem>
+                            <ComboBoxItem>115200</ComboBoxItem>
+                        </ComboBox>
                     </Grid>
                     <!--扫描可用端口按钮-->
                     <Grid Margin="0,1" DockPanel.Dock="Top">
-                        <Button x:Name="ScanButton" Content="扫描可用端口" HorizontalAlignment="Left" Margin="66,10,0,0" VerticalAlignment="Top" Width="96" Height="25"/>
+                        <Button x:Name="ScanButton" Click="ScanButton_Click" Content="扫描可用端口" HorizontalAlignment="Left" Margin="66,10,0,0" VerticalAlignment="Top" Width="96" Height="25"/>
                     </Grid>
                     <!--发送模式设置-->
                     <Grid Margin="0,1" DockPanel.Dock="Top">
@@ -67,31 +77,34 @@
                             <ColumnDefinition Width="10*"/>
                             <ColumnDefinition Width="10*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="OpenButton" Content="打开端口" HorizontalAlignment="Left" Margin="20,30,0,0" VerticalAlignment="Top" Width="75"/>
-                        <Button x:Name="CloseButton" Content="关闭端口" Grid.Column="1" HorizontalAlignment="Left" Margin="20,30,0,0" VerticalAlignment="Top" Width="75"/>
+                        <Button x:Name="OpenButton" Content="打开端口" HorizontalAlignment="Left" Margin="20,30,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="OpenButton_Click"/>
+                        <Button x:Name="CloseButton" Content="关闭端口" Grid.Column="1" HorizontalAlignment="Left" Margin="20,30,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="CloseButton_Click"/>
                     </Grid>
                 </DockPanel>
             </GroupBox>
             <!--接收模块-->
-            <GroupBox x:Name="groupBox1" Grid.Column="1" Header="接收区" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="248" Width="239">
+            <GroupBox x:Name="groupBox1" Grid.Column="1" Header="接收区" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="248" Width="239" BorderBrush="White" BorderThickness="1">
                 <DockPanel>
                     <!--接收区文本框-->
                     <!--RichTextBox比一般的TextBox多了改变字体和颜色等功能-->
+                    <RichTextBox x:Name="ReceivedRichTextBox" Margin="2,2" BorderThickness="0" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
                         <FlowDocument LineHeight="1.5" FontSize="14" FontFamily="Lucida Console"/>
                     </RichTextBox>
                 </DockPanel>
             </GroupBox>
         </Grid>
+        <!--第二行Grid内容-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <GroupBox x:Name="groupBox2" Header="发送区" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" Height="50" Width="378">
+            <GroupBox x:Name="groupBox2" Header="发送区" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" Height="50" Width="378" BorderBrush="White" BorderThickness="1">
                 <DockPanel>
+                    <TextBox x:Name="PostTextBox" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
                 </DockPanel>
             </GroupBox>
-            <Button x:Name="PostButton" Content="发送" Grid.Column="1" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Width="75" Height="41"/>
+            <Button x:Name="PostButton" IsEnabled="False" Content="发送" Grid.Column="1" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Width="75" Height="41" Click="PostButton_Click"/>
         </Grid>
     </Grid>
 </Window>

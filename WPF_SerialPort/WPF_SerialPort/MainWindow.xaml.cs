@@ -23,6 +23,7 @@ namespace WPF_SerialPort
         public MainWindow()
         {
             InitializeComponent();
+            InitializeWPF();        //自己做一个初始化函数
         }
     }
 }
