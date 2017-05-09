@@ -1,0 +1,129 @@
+﻿<Window x:Class="Skeleton.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Skeleton"
+        mc:Ignorable="d"
+        Title="Skeleton" Height="480" Width="1020" Icon="Images/title.ico" Background="LightBlue">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="8*"/>
+        </Grid.ColumnDefinitions>
+        <!--串口选择-->
+        <Grid Grid.Row="0" Grid.Column="0">
+            <GroupBox x:Name="groupBox" Header="串口选择" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="256" Height="160" BorderBrush="White" BorderThickness="1">
+                <DockPanel>
+                    <!--电机及控制串口-->
+                    <Grid Margin="0,1" DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="label" Content="电机及控制串口：" HorizontalAlignment="Left" Margin="13,0,0,0" VerticalAlignment="Top" Grid.Column="0"/>
+                        <ComboBox x:Name="Control_comboBox" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Margin="13,3,0,0" SelectedIndex="0">
+                            <ComboBoxItem>请选择串口</ComboBoxItem>
+                        </ComboBox>
+                    </Grid>
+                    <!--压力及倾角串口-->
+                    <Grid  Margin="0,1" DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="label1" Content="压力及倾角串口：" HorizontalAlignment="Left" Margin="13,0,0,0" VerticalAlignment="Top" Grid.Column="0"/>
+                        <ComboBox x:Name="Press_comboBox" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Margin="13,3,0,0" SelectedIndex="0">
+                            <ComboBoxItem>请选择串口</ComboBoxItem>
+                        </ComboBox>
+                    </Grid>
+                    <!--角度传感器串口-->
+                    <Grid Margin="0,1" DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="label2" Content="角度传感器串口：" HorizontalAlignment="Left" Margin="13,0,0,0" VerticalAlignment="Top" Grid.Column="0"/>
+                        <ComboBox x:Name="Angle_comboBox" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Margin="13,3,0,0" SelectedIndex="0">
+                            <ComboBoxItem>请选择串口</ComboBoxItem>
+                        </ComboBox>
+                    </Grid>
+                    <!--当前时间-->
+                    <Grid Margin="0,1" DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="label3" Content="当前时间：" HorizontalAlignment="Left" Margin="20,0,0,4" VerticalAlignment="Bottom" Grid.Column="0"/>
+                        <TextBox x:Name="Time_textBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="10,29,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="136"/>
+                    </Grid>
+                </DockPanel>
+            </GroupBox>
+        </Grid>
+        <!--电机信息与数据采集-->
+        <Grid Grid.Row="0" Grid.Column="1">
+            <GroupBox x:Name="groupBox1" Header="电机信息与数据采集" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="716" Height="160" BorderBrush="White" BorderThickness="1">
+                <DockPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <!--电机1-->
+                        <GroupBox x:Name="groupBox2" Header="电机1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="121" Height="138">
+                            <DockPanel>
+                                <!--电机1使能-->
+                                <Grid Margin="0,1" DockPanel.Dock="Top">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="6*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label x:Name="label4" Content="使能：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="65"/>
+                                </Grid>
+                                <!--电机1方向-->
+                                <Grid  Margin="0,1" DockPanel.Dock="Top">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="6*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label x:Name="label5" Content="方向：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="65"/>
+                                </Grid>
+                                <!--电机1转速-->
+                                <Grid Margin="0,1" DockPanel.Dock="Top">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="6*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label x:Name="label6" Content="转速：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBox2" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="65"/>
+                                </Grid>
+                                <!--电机1电流-->
+                                <Grid Margin="0,1" DockPanel.Dock="Top">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="6*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label x:Name="label7" Content="电流：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBox3" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="65"/>
+                                </Grid>
+                            </DockPanel>
+                        </GroupBox>
+                        <GroupBox x:Name="groupBox3" Grid.Column="1" Header="电机2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="121" Height="138"/>
+
+                    </Grid>
+                </DockPanel>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Window>

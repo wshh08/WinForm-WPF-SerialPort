@@ -25,6 +25,7 @@ namespace WinForm_SerialPort
             BaudComboBox.Text = "4800";                                    //设定波特率下拉菜单默认值
 
             serialPort1.DataReceived += new SerialDataReceivedEventHandler(port_DataReceived);   //必须手动添加串口数据接收事件的处理方法
+            serialPort1.Encoding = Encoding.GetEncoding("GB2312");         //串口获得GB2312字库的编码
 
             ScanSerialPort(serialPort1, SerialPortComboBox);
         }
