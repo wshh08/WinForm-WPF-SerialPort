@@ -28,7 +28,7 @@
                             <ColumnDefinition Width="5*"/>
                         </Grid.ColumnDefinitions>
                         <Label x:Name="label" Content="电机及控制串口：" HorizontalAlignment="Left" Margin="13,0,0,0" VerticalAlignment="Top" Grid.Column="0"/>
-                        <ComboBox x:Name="Control_comboBox" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Margin="13,3,0,0" SelectedIndex="0">
+                        <ComboBox x:Name="Motor_comboBox" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Margin="13,3,0,0" SelectedIndex="0" DropDownClosed="Motor_comboBox_DropDownClosed">
                             <ComboBoxItem>请选择串口</ComboBoxItem>
                         </ComboBox>
                     </Grid>
@@ -272,8 +272,8 @@
             </GroupBox>
         </Grid>
         <!--角度传感器信息-->
-        <Grid Grid.Row="2" Grid.Column="1">
-            <GroupBox x:Name="groupBox18" Header="角度传感器信息" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" BorderBrush="White" BorderThickness="1" Width="716" Height="90">
+        <Grid Grid.Row="3" Grid.Column="1">
+            <GroupBox x:Name="groupBox18" Header="角度传感器信息" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" BorderBrush="White" BorderThickness="1" Width="716" Height="84">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
@@ -312,7 +312,7 @@
         <Grid Grid.Row="3" Grid.Column="0">
             <GroupBox x:Name="groupBox25" Header="输出信息窗口" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="84" Width="256" BorderBrush="White" BorderThickness="1">
                 <StackPanel Orientation="Vertical">
-                    <TextBox Margin="0" VerticalScrollBarVisibility="Visible" Height="45"/>
+                    <TextBox Name="Out_textBox" Margin="0" VerticalScrollBarVisibility="Visible" Height="45"/>
                     <StackPanel Orientation="Horizontal" Margin="0,1,0,0">
                         <Button Content="电机停止" Margin="45,0,0,0" Width="50" Height="16" FontSize="10" Background="Red"/>
                         <Button Content="发送" Margin="50,0,0,0" Width="50" Height="16" FontSize="10"/>
@@ -321,8 +321,8 @@
             </GroupBox>
         </Grid>
         <!--倾角传感器信息-->
-        <Grid Grid.Row="3" Grid.Column="1">
-            <GroupBox x:Name="groupBox26" Header="倾角传感器信息" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="716" Height="84" BorderBrush="White" BorderThickness="1">
+        <Grid Grid.Row="2" Grid.Column="1">
+            <GroupBox x:Name="groupBox26" Header="倾角传感器信息" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="716" Height="90" BorderBrush="White" BorderThickness="1">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
