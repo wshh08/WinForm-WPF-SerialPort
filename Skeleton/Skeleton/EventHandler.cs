@@ -13,10 +13,11 @@ namespace Skeleton
     public partial class MainWindow : Window
     {
         //事件类
-        private SerialPort motor_SerialPort;
-        private SerialPort press_SerialPort;
-        private SerialPort angle_SerialPort;
+        private SerialPort motor_SerialPort; //电机串口
+        private SerialPort press_SerialPort; //压力与倾角传感器串口
+        private SerialPort angle_SerialPort; //角度传感器串口
 
+        #region comboBox控件
         private void Motor_comboBox_DropDownClosed(object sender, EventArgs e)
         {
             //电机及控制串口下拉窗口关闭后执行
@@ -30,7 +31,7 @@ namespace Skeleton
                     //当选中串口为串口SPCount[i]时
                     if(press_com == SPCount[i] || angle_com == SPCount[i])
                     {
-                        //压力与倾角传感器或倾角传感器已占用串口SPCount[i]时
+                        //压力与倾角传感器或角度传感器已占用串口SPCount[i]时
                         MessageBox.Show("串口" + SPCount[i] + "已被占用!");
                     }
                     else
@@ -40,52 +41,79 @@ namespace Skeleton
                         if (motor_SerialPort.IsOpen)   //如果电机正在使用串口，则关闭串口以备初始化
                             motor_SerialPort.Close();
 
-                        motor_SerialPort = new SerialPort();
-                        motor_SerialPort.PortName = SPCount[i];
-                        motor_SerialPort.BaudRate = 115200;
-                        motor_SerialPort.Parity = Parity.None;
-                        motor_SerialPort.StopBits = StopBits.One;
-                        motor_SerialPort.Open();
-                        motor_SerialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(controlPort_DataReceived);
+                        //电机串口初始化
+                        InitPort(motor_SerialPort, SPCount[i]);
+                        motor_SerialPort.DataReceived += new SerialDataReceivedEventHandler(motor_DataReceived);  //接收事件处理方法motor_DataReceived即电机的算法
                     }
                 }
             }
         }
 
-        private void controlPort_DataReceived(object sender, SerialDataReceivedEventArgs e)//压力倾角串口接收代码
+        private void Press_comboBox_DropDownClosed(object sender, EventArgs e)
         {
-            try
+            //压力及倾角串口下拉窗口关闭后执行
+            ComboBoxItem item = Press_comboBox.SelectedItem as ComboBoxItem; //下拉窗口当前选中的项赋给item
+            string tempstr = item.Content.ToString();                        //将选中的项目转为字串存储在tempstr中
+
+            for (int i = 0; i < SPCount.Length; i++)
             {
-                int bufferlen = motor_SerialPort.BytesToRead;//先记录下来，避免某种原因，人为的原因，操作几次之间时间长，缓存不一致
-                if (bufferlen >= 27)
+                if (tempstr == "串口" + SPCount[i])
                 {
-                    byte[] bytes = new byte[bufferlen];//声明一个临时数组存储当前来的串口数据
-                    motor_SerialPort.Read(bytes, 0, bufferlen);//读取串口内部缓冲区数据到buf数组
-                    motor_SerialPort.DiscardInBuffer();//清空串口内部缓存
-                    //处理和存储数据
-                    Int16 endFlag = BitConverter.ToInt16(bytes, 25);
-                    if (endFlag == 2573)
+                    //当选中串口为串口SPCount[i]时
+                    if (motor_com == SPCount[i] || angle_com == SPCount[i])
                     {
-                        if (bytes[0] == 0x23)
-                            for (int f = 0; f < 4; f++)
-                            {
-                                enable[f] = bytes[f * 6 + 1];
-                                direction[f] = bytes[f * 6 + 2];
-                                speed[f] = bytes[f * 6 + 3] * 256 + bytes[f * 6 + 4];
-                                if (speed[f] >= 2048) speed[f] = (speed[f] - 2048) / 4096 * 5180;
-                                else speed[f] = (2048 - speed[f]) / 4096 * -5180;
-                                current[f] = bytes[f * 6 + 5] * 256 + bytes[f * 6 + 6];
-                                if (current[f] >= 2048) current[f] = (current[f] - 2048) / 4096 * 30;
-                                else current[f] = (2048 - current[f]) / 4096 * -30;
-                            }
+                        //电机或角度传感器已占用串口SPCount[i]时
+                        MessageBox.Show("串口" + SPCount[i] + "已被占用!");
+                    }
+                    else
+                    {
+                        press_com = SPCount[i];
+
+                        if (press_SerialPort.IsOpen)   //如果电机正在使用串口，则关闭串口以备初始化
+                            press_SerialPort.Close();
+
+                        //电机串口初始化
+                        InitPort(press_SerialPort, SPCount[i]);
+                        press_SerialPort.DataReceived += new SerialDataReceivedEventHandler(press_DataReceived);  //接收事件处理方法press_DataReceived即电机的算法
                     }
                 }
             }
-            catch
+        }
+
+        private void Angle_comboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            //角度传感器串口下拉窗口关闭后执行
+            ComboBoxItem item = Angle_comboBox.SelectedItem as ComboBoxItem; //下拉窗口当前选中的项赋给item
+            string tempstr = item.Content.ToString();                        //将选中的项目转为字串存储在tempstr中
+
+            for (int i = 0; i < SPCount.Length; i++)
             {
+                if (tempstr == "串口" + SPCount[i])
+                {
+                    //当选中串口为串口SPCount[i]时
+                    if (motor_com == SPCount[i] || press_com == SPCount[i])
+                    {
+                        //电机或角度传感器已占用串口SPCount[i]时
+                        MessageBox.Show("串口" + SPCount[i] + "已被占用!");
+                    }
+                    else
+                    {
+                        angle_com = SPCount[i];
 
+                        if (angle_SerialPort.IsOpen)   //如果电机正在使用串口，则关闭串口以备初始化
+                            angle_SerialPort.Close();
 
+                        //电机串口初始化
+                        InitPort(angle_SerialPort, SPCount[i]);
+                        angle_SerialPort.DataReceived += new SerialDataReceivedEventHandler(angle_DataReceived);  //接收事件处理方法angle_DataReceived即电机的算法
+
+                        SendCommands();
+                    }
+                }
             }
         }
+        #endregion
+
+
     }
 }

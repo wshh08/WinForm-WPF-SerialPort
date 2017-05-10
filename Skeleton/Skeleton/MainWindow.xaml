@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Skeleton"
         mc:Ignorable="d"
-        Title="Skeleton" Height="480" Width="1020" Icon="Images/title.ico" Background="LightBlue">
+        Title="Skeleton" Height="480" Width="1020" Icon="Images/title.ico" Background="LightBlue"
+        Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40*"/>
@@ -39,7 +40,7 @@
                             <ColumnDefinition Width="5*"/>
                         </Grid.ColumnDefinitions>
                         <Label x:Name="label1" Content="压力及倾角串口：" HorizontalAlignment="Left" Margin="13,0,0,0" VerticalAlignment="Top" Grid.Column="0"/>
-                        <ComboBox x:Name="Press_comboBox" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Margin="13,3,0,0" SelectedIndex="0">
+                        <ComboBox x:Name="Press_comboBox" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Margin="13,3,0,0" SelectedIndex="0" DropDownClosed="Press_comboBox_DropDownClosed">
                             <ComboBoxItem>请选择串口</ComboBoxItem>
                         </ComboBox>
                     </Grid>
@@ -50,19 +51,16 @@
                             <ColumnDefinition Width="5*"/>
                         </Grid.ColumnDefinitions>
                         <Label x:Name="label2" Content="角度传感器串口：" HorizontalAlignment="Left" Margin="13,0,0,0" VerticalAlignment="Top" Grid.Column="0"/>
-                        <ComboBox x:Name="Angle_comboBox" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Margin="13,3,0,0" SelectedIndex="0">
+                        <ComboBox x:Name="Angle_comboBox" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102" Margin="13,3,0,0" SelectedIndex="0" DropDownClosed="Angle_comboBox_DropDownClosed">
                             <ComboBoxItem>请选择串口</ComboBoxItem>
                         </ComboBox>
                     </Grid>
                     <!--当前时间-->
-                    <Grid Margin="0,1" DockPanel.Dock="Top">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="5*"/>
-                        </Grid.ColumnDefinitions>
-                        <Label x:Name="label3" Content="当前时间：" HorizontalAlignment="Left" Margin="20,0,0,4" VerticalAlignment="Bottom" Grid.Column="0"/>
-                        <TextBox x:Name="Time_textBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="10,29,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="136"/>
-                    </Grid>
+                    <StackPanel Orientation="Vertical" Margin="1">
+                        <Label x:Name="label3" Content="当前时间：" HorizontalAlignment="Left" Margin="90,2,0,4" VerticalAlignment="Bottom" Grid.Column="0"/>
+                        <TextBox x:Name="Time_textBox" IsReadOnly="True" HorizontalAlignment="Left" Height="22" Margin="56,-5,0,0" VerticalAlignment="Top" Width="130"/>
+                    </StackPanel>
+
                 </DockPanel>
             </GroupBox>
         </Grid>
@@ -334,11 +332,11 @@
                         <StackPanel Orientation="Horizontal" Margin="0">
                             <StackPanel Orientation="Vertical" Margin="1">
                                 <Label Content="x轴" Margin="5,0,0,0"/>
-                                <TextBox Text="0" Margin="10,0,0,0" Width="50"/>
+                                <TextBox x:Name="Dip1_x_TextBox" Text="0" Margin="10,0,0,0" Width="50"/>
                             </StackPanel>
                             <StackPanel Orientation="Vertical" Margin="1">
                                 <Label Content="y轴" Margin="5,0,0,0"/>
-                                <TextBox Text="0" Margin="10,0,0,0" Width="50"/>
+                                <TextBox x:Name="Dip1_y_TextBox" Text="0" Margin="10,0,0,0" Width="50"/>
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
@@ -346,11 +344,11 @@
                         <StackPanel Orientation="Horizontal" Margin="0">
                             <StackPanel Orientation="Vertical" Margin="1">
                                 <Label Content="x轴" Margin="5,0,0,0"/>
-                                <TextBox Text="0" Margin="10,0,0,0" Width="50"/>
+                                <TextBox x:Name="Dip2_x_TextBox" Text="0" Margin="10,0,0,0" Width="50"/>
                             </StackPanel>
                             <StackPanel Orientation="Vertical" Margin="1">
                                 <Label Content="y轴" Margin="5,0,0,0"/>
-                                <TextBox Text="0" Margin="10,0,0,0" Width="50"/>
+                                <TextBox x:Name="Dip2_y_TextBox" Text="0" Margin="10,0,0,0" Width="50"/>
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
@@ -358,11 +356,11 @@
                         <StackPanel Orientation="Horizontal" Margin="0">
                             <StackPanel Orientation="Vertical" Margin="1">
                                 <Label Content="x轴" Margin="5,0,0,0"/>
-                                <TextBox Text="0" Margin="10,0,0,0" Width="50"/>
+                                <TextBox x:Name="Dip3_x_TextBox" Text="0" Margin="10,0,0,0" Width="50"/>
                             </StackPanel>
                             <StackPanel Orientation="Vertical" Margin="1">
                                 <Label Content="y轴" Margin="5,0,0,0"/>
-                                <TextBox Text="0" Margin="10,0,0,0" Width="50"/>
+                                <TextBox x:Name="Dip3_y_TextBox" Text="0" Margin="10,0,0,0" Width="50"/>
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
@@ -370,11 +368,11 @@
                         <StackPanel Orientation="Horizontal" Margin="0">
                             <StackPanel Orientation="Vertical" Margin="1">
                                 <Label Content="x轴" Margin="5,0,0,0"/>
-                                <TextBox Text="0" Margin="10,0,0,0" Width="50"/>
+                                <TextBox x:Name="Dip4_x_TextBox" Text="0" Margin="10,0,0,0" Width="50"/>
                             </StackPanel>
                             <StackPanel Orientation="Vertical" Margin="1">
                                 <Label Content="y轴" Margin="5,0,0,0"/>
-                                <TextBox Text="0" Margin="10,0,0,0" Width="50"/>
+                                <TextBox x:Name="Dip4_y_TextBox" Text="0" Margin="10,0,0,0" Width="50"/>
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
