@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
         <!--串口选择-->
         <Grid Grid.Row="0" Grid.Column="0">
-            <GroupBox x:Name="groupBox" Header="串口选择" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="256" Height="160" BorderBrush="White" BorderThickness="1">
+            <GroupBox x:Name="groupBox" Header="串口选择" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="256" Height="160" BorderBrush="White" BorderThickness="1">
                 <DockPanel>
                     <!--电机及控制串口-->
                     <Grid Margin="0,1" DockPanel.Dock="Top">
@@ -79,7 +79,7 @@
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <!--电机1-->
-                        <GroupBox x:Name="groupBox2" Header="电机1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="121" Height="138">
+                        <GroupBox x:Name="groupBox2" Header="电机1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="121" Height="138" BorderBrush="White" BorderThickness="1">
                             <DockPanel>
                                 <!--电机1使能-->
                                 <Grid Margin="0,1" DockPanel.Dock="Top">
@@ -96,8 +96,8 @@
                                         <ColumnDefinition Width="4*"/>
                                         <ColumnDefinition Width="6*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label x:Name="label5" Content="方向：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                                    <TextBox x:Name="textBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="65"/>
+                                    <Label x:Name="label5" Content="方向：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-2"/>
+                                    <TextBox x:Name="textBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,0,0,-2" VerticalAlignment="Top" Width="65"/>
                                 </Grid>
                                 <!--电机1转速-->
                                 <Grid Margin="0,1" DockPanel.Dock="Top">
@@ -114,15 +114,271 @@
                                         <ColumnDefinition Width="4*"/>
                                         <ColumnDefinition Width="6*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label x:Name="label7" Content="电流：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                                    <TextBox x:Name="textBox3" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="65"/>
+                                    <Label x:Name="label7" Content="电流：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-2,0,0"/>
+                                    <TextBox x:Name="textBox3" Grid.Column="1" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="65"/>
                                 </Grid>
                             </DockPanel>
                         </GroupBox>
-                        <GroupBox x:Name="groupBox3" Grid.Column="1" Header="电机2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="121" Height="138"/>
-
+                        <!--电机2-->
+                        <GroupBox x:Name="groupBox3" Grid.Column="1" Header="电机2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="121" Height="138" BorderBrush="White" BorderThickness="1">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label x:Name="label8" Content="使能：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBox4" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="62"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label x:Name="label9" Content="方向：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBox5" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="62"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label x:Name="label10" Content="转速：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBox6" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="62"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label x:Name="label11" Content="电流：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBox7" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="62"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </GroupBox>
+                        <!--电机3-->
+                        <GroupBox x:Name="groupBox4" Grid.Column="2" Header="电机3" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="121" Height="138" BorderBrush="White" BorderThickness="1">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label x:Name="label12" Content="使能：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBox8" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="62"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label x:Name="label13" Content="方向：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBox9" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="62"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label x:Name="label14" Content="转速：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBox10" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="62"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label x:Name="label15" Content="电流：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBox11" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="62"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </GroupBox>
+                        <!--电机4-->
+                        <GroupBox x:Name="groupBox5" Grid.Column="3" Header="电机4" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="121" Height="138" BorderBrush="White" BorderThickness="1">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label x:Name="label16" Content="使能：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBox12" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="62"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label x:Name="label17" Content="方向：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBox13" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="62"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label x:Name="label18" Content="转速：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBox14" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="62"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label x:Name="label19" Content="电流：" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBox15" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" VerticalAlignment="Top" Width="62"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </GroupBox>
+                        <!--数据采集-->
+                        <GroupBox x:Name="groupBox6" Grid.Column="4" Header="数据采集" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="121" Height="138" BorderBrush="White" BorderThickness="1">
+                            <StackPanel Orientation="Vertical" Margin="3">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="采样率" FontSize="11" Margin="3"/>
+                                    <TextBox x:Name="SetTimetextBox" Width="30" Height="16" Text="20"/>
+                                    <Label Content="ms" FontSize="11" Margin="3"/>
+                                </StackPanel>
+                                <Button x:Name="StartPickbutton" Content="开始采集" Margin="5" Width="60"/>
+                                <Button x:Name="EndPickbutton" Content="结束采集" Margin="5" Width="60"/>
+                            </StackPanel>
+                        </GroupBox>
                     </Grid>
                 </DockPanel>
+            </GroupBox>
+        </Grid>
+        <!--电机控制-->
+        <Grid Grid.Row="1" Grid.Column="0">
+            <GroupBox x:Name="groupBox7" Header="电机控制" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="256" Height="90" BorderBrush="White" BorderThickness="1">
+                <StackPanel Orientation="Vertical" Margin="1">
+                    <StackPanel Orientation="Horizontal" Margin="0">
+                        <Label Content="使能：" FontSize="10"/>
+                        <TextBox x:Name="EnabletextBox" Width="70" Height="20" Text="0"/>
+                        <Label Content="方向：" Margin="10,0,0,0" FontSize="10"/>
+                        <TextBox x:Name="FXtextBox" Width="70" Height="20" Text="0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0">
+                        <Label Content="转速：" FontSize="10"/>
+                        <TextBox x:Name="ZStextBox" Width="70" Height="20" Text="0"/>
+                        <Label Content="数量：" Margin="10,0,0,0" FontSize="10"/>
+                        <TextBox x:Name="NUMtextBox" Width="70" Height="20" Text="0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0">
+                        <Label Content="已添加数：" FontSize="10"/>
+                        <TextBox x:Name="textBox16" Height="15" Width="100"/>
+                        <Button x:Name="button" Margin="23,0,0,0" Content="添加命令" FontSize="10" Height="15" Width="47"/>
+
+
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <!--压力传感器信息-->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <GroupBox x:Name="groupBox8" Header="压力传感器信息" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" BorderBrush="White" BorderThickness="1" Height="90" Width="716">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox x:Name="groupBox9" Header="压力传感器1" FontSize="8" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="68" Height="58" BorderBrush="White" BorderThickness="1">
+                        <TextBox x:Name="Pressure1_Textbox" IsReadOnly="True" Height="25" Margin="0,6,1,0"  VerticalAlignment="Top" Text="0" FontSize="10"/>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox10" Header="压力传感器2" FontSize="8" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="68" Height="58" BorderBrush="White" BorderThickness="1">
+                        <TextBox x:Name="Pressure2_Textbox" IsReadOnly="True" Height="25" Margin="0,6,1,0"  VerticalAlignment="Top" Text="0" FontSize="10"/>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox11" Header="压力传感器3" FontSize="8" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="68" Height="58" BorderBrush="White" BorderThickness="1">
+                        <TextBox x:Name="Pressure3_Textbox" IsReadOnly="True" Height="25" Margin="0,6,1,0"  VerticalAlignment="Top" Text="0" FontSize="10"/>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox12" Header="压力传感器4" FontSize="8" Grid.Column="3" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="68" Height="58" BorderBrush="White" BorderThickness="1">
+                        <TextBox x:Name="Pressure4_Textbox" IsReadOnly="True" Height="25" Margin="0,6,1,0"  VerticalAlignment="Top" Text="0" FontSize="10"/>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox13" Header="压力传感器5" FontSize="8" Grid.Column="4" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="68" Height="58" BorderBrush="White" BorderThickness="1">
+                        <TextBox x:Name="Pressure5_Textbox" IsReadOnly="True" Height="25" Margin="0,6,1,0"  VerticalAlignment="Top" Text="0" FontSize="10"/>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox14" Header="压力传感器6" FontSize="8" Grid.Column="5" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="68" Height="58" BorderBrush="White" BorderThickness="1">
+                        <TextBox x:Name="Pressure6_Textbox" IsReadOnly="True" Height="25" Margin="0,6,1,0"  VerticalAlignment="Top" Text="0" FontSize="10"/>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox15" Header="压力传感器7" FontSize="8" Grid.Column="6" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="68" Height="58" BorderBrush="White" BorderThickness="1">
+                        <TextBox x:Name="Pressure7_Textbox" IsReadOnly="True" Height="25" Margin="0,6,1,0"  VerticalAlignment="Top" Text="0" FontSize="10"/>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox16" Header="压力传感器8" FontSize="8" Grid.Column="7" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="68" Height="58" BorderBrush="White" BorderThickness="1">
+                        <TextBox x:Name="Pressure8_Textbox" IsReadOnly="True" Height="25" Margin="0,6,1,0"  VerticalAlignment="Top" Text="0" FontSize="10"/>
+                    </GroupBox>
+                </Grid>
+            </GroupBox>
+        </Grid>
+        <!--输入信息窗口-->
+        <Grid Grid.Row="2" Grid.Column="0">
+            <GroupBox x:Name="groupBox17" Header="输入信息窗口" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="256" Height="90" BorderBrush="White" BorderThickness="1">
+                <TextBox x:Name="textBox17" HorizontalAlignment="Left" Height="68" Margin="0,0,-2,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" IsReadOnly="True" VerticalScrollBarVisibility="Visible"/>
+            </GroupBox>
+        </Grid>
+        <!--角度传感器信息-->
+        <Grid Grid.Row="2" Grid.Column="1">
+            <GroupBox x:Name="groupBox18" Header="角度传感器信息" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" BorderBrush="White" BorderThickness="1" Width="716" Height="90">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox x:Name="groupBox19" Header="角度传感器1" FontSize="8" Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="68" Height="58" BorderBrush="White" BorderThickness="1">
+                        <TextBox x:Name="Angle1_Textbox" IsReadOnly="True" Height="25" Margin="0,6,1,0"  VerticalAlignment="Top" Text="0" FontSize="10"/>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox20" Header="角度传感器2" FontSize="8" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="68" Height="58" BorderBrush="White" BorderThickness="1">
+                        <TextBox x:Name="Angle2_Textbox" IsReadOnly="True" Height="25" Margin="0,6,1,0"  VerticalAlignment="Top" Text="0" FontSize="10"/>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox21" Header="角度传感器3" FontSize="8" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="68" Height="58" BorderBrush="White" BorderThickness="1">
+                        <TextBox x:Name="Angle3_Textbox" IsReadOnly="True" Height="25" Margin="0,6,1,0"  VerticalAlignment="Top" Text="0" FontSize="10"/>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox22" Header="角度传感器4" FontSize="8" Grid.Column="3" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="68" Height="58" BorderBrush="White" BorderThickness="1">
+                        <TextBox x:Name="Angle4_Textbox" IsReadOnly="True" Height="25" Margin="0,6,1,0"  VerticalAlignment="Top" Text="0" FontSize="10"/>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox23" Header="角度传感器5" FontSize="8" Grid.Column="4" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="68" Height="58" BorderBrush="White" BorderThickness="1">
+                        <TextBox x:Name="Angle5_Textbox" IsReadOnly="True" Height="25" Margin="0,6,1,0"  VerticalAlignment="Top" Text="0" FontSize="10"/>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox24" Header="角度传感器6" FontSize="8" Grid.Column="5" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="68" Height="58" BorderBrush="White" BorderThickness="1">
+                        <TextBox x:Name="Angle6_Textbox" IsReadOnly="True" Height="25" Margin="0,6,1,0"  VerticalAlignment="Top" Text="0" FontSize="10"/>
+                    </GroupBox>
+                    <Button x:Name="button1" Content="角度初始化" Grid.Column="6" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Width="68"/>
+                    <Button x:Name="button2" Content="重置" Grid.Column="7" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Width="68"/>
+                </Grid>
+            </GroupBox>
+        </Grid>
+        <!--输出信息窗口-->
+        <Grid Grid.Row="3" Grid.Column="0">
+            <GroupBox x:Name="groupBox25" Header="输出信息窗口" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="84" Width="256" BorderBrush="White" BorderThickness="1">
+                <StackPanel Orientation="Vertical">
+                    <TextBox Margin="0" VerticalScrollBarVisibility="Visible" Height="45"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,1,0,0">
+                        <Button Content="电机停止" Margin="45,0,0,0" Width="50" Height="16" FontSize="10" Background="Red"/>
+                        <Button Content="发送" Margin="50,0,0,0" Width="50" Height="16" FontSize="10"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <!--倾角传感器信息-->
+        <Grid Grid.Row="3" Grid.Column="1">
+            <GroupBox x:Name="groupBox26" Header="倾角传感器信息" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="716" Height="84" BorderBrush="White" BorderThickness="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox x:Name="groupBox27" Header="倾角传感器1" FontSize="8" Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="156" Height="58" BorderBrush="White" BorderThickness="1">
+                        <StackPanel Orientation="Horizontal" Margin="0">
+                            <StackPanel Orientation="Vertical" Margin="1">
+                                <Label Content="x轴" Margin="5,0,0,0"/>
+                                <TextBox Text="0" Margin="10,0,0,0" Width="50"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="1">
+                                <Label Content="y轴" Margin="5,0,0,0"/>
+                                <TextBox Text="0" Margin="10,0,0,0" Width="50"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox28" Header="倾角传感器2" FontSize="8" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="156" Height="58" BorderBrush="White" BorderThickness="1">
+                        <StackPanel Orientation="Horizontal" Margin="0">
+                            <StackPanel Orientation="Vertical" Margin="1">
+                                <Label Content="x轴" Margin="5,0,0,0"/>
+                                <TextBox Text="0" Margin="10,0,0,0" Width="50"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="1">
+                                <Label Content="y轴" Margin="5,0,0,0"/>
+                                <TextBox Text="0" Margin="10,0,0,0" Width="50"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox29" Header="倾角传感器3" FontSize="8" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="156" Height="58" BorderBrush="White" BorderThickness="1">
+                        <StackPanel Orientation="Horizontal" Margin="0">
+                            <StackPanel Orientation="Vertical" Margin="1">
+                                <Label Content="x轴" Margin="5,0,0,0"/>
+                                <TextBox Text="0" Margin="10,0,0,0" Width="50"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="1">
+                                <Label Content="y轴" Margin="5,0,0,0"/>
+                                <TextBox Text="0" Margin="10,0,0,0" Width="50"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox30" Header="倾角传感器4" FontSize="8" Grid.Column="3" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="156" Height="58" BorderBrush="White" BorderThickness="1">
+                        <StackPanel Orientation="Horizontal" Margin="0">
+                            <StackPanel Orientation="Vertical" Margin="1">
+                                <Label Content="x轴" Margin="5,0,0,0"/>
+                                <TextBox Text="0" Margin="10,0,0,0" Width="50"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="1">
+                                <Label Content="y轴" Margin="5,0,0,0"/>
+                                <TextBox Text="0" Margin="10,0,0,0" Width="50"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
             </GroupBox>
         </Grid>
     </Grid>
