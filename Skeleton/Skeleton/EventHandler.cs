@@ -191,14 +191,14 @@ namespace Skeleton
             try
             {
                 int bufferlen = motor_SerialPort.BytesToRead;    //先记录下来，避免某种原因，人为的原因，操作几次之间时间长，缓存不一致
-                if (bufferlen >= 27)
+                if (bufferlen >= 27)                             //一个电机有使能，方向，转速，电流4个参数，前两个各占1个位，后两个各占2个位，故一个电机数据占6各位，加上一个开始位，两个停止位，故总有1+6*4+2=27位
                 {
                     byte[] bytes = new byte[bufferlen];          //声明一个临时数组存储当前来的串口数据
                     motor_SerialPort.Read(bytes, 0, bufferlen);  //读取串口内部缓冲区数据到buf数组
                     motor_SerialPort.DiscardInBuffer();          //清空串口内部缓存
                     //处理和存储数据
                     Int16 endFlag = BitConverter.ToInt16(bytes, 25);
-                    if (endFlag == 2573)
+                    if (endFlag == 2573)                         //停止位0A0D (0D0A?)
                     {
                         if (bytes[0] == 0x23)
                             for (int f = 0; f < 4; f++)
@@ -206,8 +206,8 @@ namespace Skeleton
                                 enable[f] = bytes[f * 6 + 1];
                                 direction[f] = bytes[f * 6 + 2];
                                 speed[f] = bytes[f * 6 + 3] * 256 + bytes[f * 6 + 4];
-                                if (speed[f] >= 2048) speed[f] = (speed[f] - 2048) / 4096 * 5180;
-                                else speed[f] = (2048 - speed[f]) / 4096 * -5180;
+                                if (speed[f] >= 2048) speed[f] = (speed[f] - 2048) / 4096 * 5180;          //实际范围-2590~2590,而对应范围是0~4096，故中间值位2048
+                                else speed[f] = (2048 - speed[f]) / 4096 * -5180;                        
                                 current[f] = bytes[f * 6 + 5] * 256 + bytes[f * 6 + 6];
                                 if (current[f] >= 2048) current[f] = (current[f] - 2048) / 4096 * 30;
                                 else current[f] = (2048 - current[f]) / 4096 * -30;
@@ -252,18 +252,18 @@ namespace Skeleton
         public void press_DataReceived(object sender, SerialDataReceivedEventArgs e)//接受压力相关数据的委托事件（算法）
         {
             int bufferlen = press_SerialPort.BytesToRead;//先记录下来，避免某种原因，人为的原因，操作几次之间时间长，缓存不一致
-            if (bufferlen >= 34)
+            if (bufferlen >= 34)                   //前16位储存8个压力值，后16位储存8个倾角值，最后2位是停止位
             {
                 byte[] bytes = new byte[bufferlen];//声明一个临时数组存储当前来的串口数据
                 press_SerialPort.Read(bytes, 0, bufferlen);//读取串口内部缓冲区数据到buf数组
                 press_SerialPort.DiscardInBuffer();//清空串口内部缓存
                                                    //处理和存储数据
-                Int16 endFlag = BitConverter.ToInt16(bytes, 32);
+                Int16 endFlag = BitConverter.ToInt16(bytes, 32);  
                 if (endFlag == 2573)
                 {
                     for (int f = 0; f < 8; f++)
                     {
-                        tempPress[f] = BitConverter.ToInt16(bytes, f * 2);
+                        tempPress[f] = BitConverter.ToInt16(bytes, f * 2);    //byte是8位，tempPress是Int16，即16位，所以一个Int16占byte数组两个位   
                         tempAngle[f] = BitConverter.ToInt16(bytes, f * 2 + 16);
                         dirangle[f] = (Convert.ToDouble(tempAngle[f]) * (3.3 / 4096) - 0.7444) / 1.5 * 180;
                     }
